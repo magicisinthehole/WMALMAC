@@ -11,6 +11,7 @@
 		4A0001001000000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0001101000000002 /* ContentView.swift */; };
 		4A0001001000000003 /* AudioEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0001101000000003 /* AudioEncoder.swift */; };
 		4A0001001000000004 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A0001101000000040 /* Assets.xcassets */; };
+		4A0001701000000002 /* ffmpeg in Copy Files */ = {isa = PBXBuildFile; fileRef = 4A0001101000000050 /* ffmpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		4A0001101000000020 /* WMAEncoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WMAEncoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A0001101000000030 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A0001101000000040 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4A0001101000000050 /* ffmpeg */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "../ffmpeg-wma/build/install/bin/ffmpeg"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +33,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4A0001601000000003 /* Copy Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Resources;
+			dstSubfolderSpec = 16;
+			files = (
+				4A0001701000000002 /* ffmpeg in Copy Files */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXGroup section */
 		4A0001301000000001 = {
@@ -69,6 +84,7 @@
 			buildPhases = (
 				4A0001701000000001 /* Sources */,
 				4A0001201000000001 /* Frameworks */,
+				4A0001601000000003 /* Copy Files */,
 				4A0001801000000003 /* Resources */,
 			);
 			buildRules = (
@@ -177,11 +193,13 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = WMAEncoder/Entitlements.plist;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 3BE26DU42M;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -265,11 +283,13 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = WMAEncoder/Entitlements.plist;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 3BE26DU42M;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
