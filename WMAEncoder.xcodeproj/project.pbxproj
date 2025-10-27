@@ -11,7 +11,7 @@
 		4A0001001000000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0001101000000002 /* ContentView.swift */; };
 		4A0001001000000003 /* AudioEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0001101000000003 /* AudioEncoder.swift */; };
 		4A0001001000000004 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A0001101000000040 /* Assets.xcassets */; };
-		4A0001701000000002 /* ffmpeg in Copy Files */ = {isa = PBXBuildFile; fileRef = 4A0001101000000050 /* ffmpeg */; };
+		4A0001001000000005 /* Resources in Resources */ = {isa = PBXBuildFile; fileRef = 4A0001101000000060 /* Resources */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,7 +21,7 @@
 		4A0001101000000020 /* WMAEncoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WMAEncoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A0001101000000030 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A0001101000000040 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4A0001101000000050 /* ffmpeg */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "../ffmpeg-wma/build/install/bin/ffmpeg"; sourceTree = SOURCE_ROOT; };
+		4A0001101000000060 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,19 +33,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		4A0001601000000003 /* Copy Files */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = Contents/Resources;
-			dstSubfolderSpec = 16;
-			files = (
-				4A0001701000000002 /* ffmpeg in Copy Files */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXGroup section */
 		4A0001301000000001 = {
@@ -70,6 +57,7 @@
 				4A0001101000000002 /* ContentView.swift */,
 				4A0001101000000003 /* AudioEncoder.swift */,
 				4A0001101000000040 /* Assets.xcassets */,
+				4A0001101000000060 /* Resources */,
 				4A0001101000000030 /* Info.plist */,
 			);
 			path = WMAEncoder;
@@ -84,7 +72,6 @@
 			buildPhases = (
 				4A0001701000000001 /* Sources */,
 				4A0001201000000001 /* Frameworks */,
-				4A0001601000000003 /* Copy Files */,
 				4A0001801000000003 /* Resources */,
 			);
 			buildRules = (
@@ -138,6 +125,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A0001001000000004 /* Assets.xcassets in Resources */,
+				4A0001001000000005 /* Resources in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,7 +149,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -232,7 +220,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "WMAL MAC";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -251,7 +239,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -317,7 +305,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "WMAL MAC";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.andywmoe.wmalmac.app;
