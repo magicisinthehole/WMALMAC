@@ -30,9 +30,63 @@ A macOS application for encoding audio files to WMA Lossless format.
 
 ## Installation
 
-1. Download the DMG from releases
+### From Release
+
+1. Download the DMG from [releases](https://github.com/magicisinthehole/WMALMAC/releases)
 2. Drag WMAEncoder.app to your Applications folder
 3. Launch the application
+
+### Building from Source
+
+#### Requirements
+- macOS 12.0 or later
+- Xcode 13.0 or later
+- Git
+- Standard build tools (make, etc.)
+
+#### Building FFmpeg
+
+1. Clone the WMA Lossless FFmpeg fork:
+   ```bash
+   git clone https://github.com/magicisinthehole/FFmpeg.git -b wma-lossless-encoder
+   cd FFmpeg
+   ```
+
+2. Configure and build FFmpeg:
+   ```bash
+   ./configure \
+     --enable-gpl \
+     --disable-libxcb \
+     --disable-libxcb-shm \
+     --disable-libxcb-xfixes \
+     --disable-libxcb-shape \
+     --disable-xlib
+   make -j4
+   ```
+
+3. Copy the binaries:
+   ```bash
+   cp ffmpeg <path-to-WMAEncoder>/WMAEncoder/Resources/
+   cp ffprobe <path-to-WMAEncoder>/WMAEncoder/Resources/
+   ```
+
+#### Building the Application
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/magicisinthehole/WMALMAC.git
+   cd WMALMAC/WMAEncoder
+   ```
+
+2. Open the project in Xcode:
+   ```bash
+   open WMAEncoder.xcodeproj
+   ```
+
+3. Build and run:
+   - Select the WMAEncoder scheme
+   - Build (Cmd+B) or Run (Cmd+R)
+   - No code signing certificate is required to build and run locally
 
 ## Usage
 
