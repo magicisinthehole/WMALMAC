@@ -13,6 +13,10 @@ A macOS application for encoding audio files to WMA Lossless format.
 - Encoding progress display
 - Uses [WMA Lossless encoder for FFmpeg](https://github.com/magicisinthehole/FFmpeg/tree/wma-lossless-encoder)
 
+## Screenshot
+
+![WMA Encoder Interface](screenshot.png)
+
 ## System Requirements
 
 - macOS 12.0 or later
