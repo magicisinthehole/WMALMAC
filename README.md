@@ -6,11 +6,17 @@ A macOS application for encoding audio files to WMA Lossless format.
 
 - Drag and drop file selection
 - Supports MP3, WAV, AIFF, FLAC, and other audio formats
+- Recursive folder scanning
+- File type filtering
+- Three output location modes:
+  - Custom folder
+  - Same directory as input files
+  - Subfolder within input file directories
 - Configurable encoding options:
-  - Bit Depth: 16-bit or 24-bit
-  - Sample Rate: 44.1 kHz, 48 kHz, or 96 kHz
-- Batch encoding of multiple files
-- Encoding progress display
+  - Auto mode: matches input file properties (bit depth and sample rate)
+  - Manual mode: 16-bit or 24-bit depth, 44.1/48/96 kHz sample rate
+- Batch encoding with parallel processing (up to 4 concurrent files)
+- Per-file encoding status with visual indicators
 - Uses [WMA Lossless encoder for FFmpeg](https://github.com/magicisinthehole/FFmpeg/tree/wma-lossless-encoder)
 
 ## Screenshot
@@ -31,17 +37,26 @@ A macOS application for encoding audio files to WMA Lossless format.
 ## Usage
 
 1. **Add Files**
-   - Drag audio files into the drop zone or click to browse
+   - Drag audio files or folders into the drop zone or click to browse
+   - When selecting folders, all audio files in subdirectories are automatically added
+   - Use the file type filter to view specific formats
 
-2. **Set Options** (optional)
-   - Expand "Encoding Options" to change bit depth (default: 16-bit) or sample rate (default: 48 kHz)
+2. **Set Encoding Options** (optional)
+   - Expand "Encoding Options" to select encoding mode:
+     - Auto: matches each file's original properties (default: 16-bit, 48 kHz)
+     - Manual: specify bit depth (16-bit or 24-bit) and sample rate (44.1/48/96 kHz)
 
-3. **Select Output Folder**
-   - Click "Browse" to choose where to save encoded files
+3. **Select Output Location**
+   - Choose output mode:
+     - Custom Folder: select a specific directory
+     - Same as Input: files are saved alongside originals
+     - Subfolder in Input: files are saved in a subfolder (configurable name)
 
 4. **Encode**
    - Click "Encode to WMA" to start
-   - Encoded files are saved with .wma extension
+   - Up to 4 files encode simultaneously
+   - Progress indicators show encoding status for each file
+   - Green checkmark appears when each file completes
 
 ## Troubleshooting
 
