@@ -17,7 +17,7 @@ A macOS application for encoding audio files to WMA Lossless format.
   - Manual mode: 16-bit or 24-bit depth, 44.1/48/96 kHz sample rate
 - Batch encoding with parallel processing (up to 4 concurrent files)
 - Per-file encoding status with visual indicators
-- Uses [WMA Lossless encoder for FFmpeg](https://github.com/magicisinthehole/FFmpeg/tree/wma-lossless-encoder)
+- Uses [WMA Lossless encoder for FFmpeg](https://github.com/magicisinthehole/FFmpeg-with-WMA-Lossless-Enc/tree/wma-lossless-encoder)
 
 ## Screenshot
 
@@ -48,20 +48,20 @@ A macOS application for encoding audio files to WMA Lossless format.
 
 1. Clone the WMA Lossless FFmpeg fork:
    ```bash
-   git clone https://github.com/magicisinthehole/FFmpeg.git -b wma-lossless-encoder
+   git clone https://github.com/magicisinthehole/FFmpeg-with-WMA-Lossless-Enc.git -b wma-lossless-encoder FFmpeg
    cd FFmpeg
    ```
 
-2. Configure and build FFmpeg:
+2. Configure and build FFmpeg for your native architecture:
    ```bash
-   ./configure \
+   MACOSX_DEPLOYMENT_TARGET=12.0 ./configure \
      --enable-gpl \
-     --disable-libxcb \
-     --disable-libxcb-shm \
-     --disable-libxcb-xfixes \
-     --disable-libxcb-shape \
-     --disable-xlib
-   make -j4
+     --disable-libxcb --disable-libxcb-shm --disable-libxcb-xfixes --disable-libxcb-shape \
+     --disable-xlib \
+     --disable-autodetect \
+     --extra-cflags="-mmacosx-version-min=12.0" \
+     --extra-ldflags="-mmacosx-version-min=12.0"
+   make -j$(sysctl -n hw.ncpu)
    ```
 
 3. Copy the binaries:
@@ -69,6 +69,33 @@ A macOS application for encoding audio files to WMA Lossless format.
    cp ffmpeg <path-to-WMAEncoder>/WMAEncoder/Resources/
    cp ffprobe <path-to-WMAEncoder>/WMAEncoder/Resources/
    ```
+
+##### Optional: Universal binary (arm64 + x86_64)
+
+The bundled binaries shipped in the official release are universal. To build a universal binary yourself, do two out-of-tree builds and combine them with `lipo`:
+
+```bash
+mkdir build_arm64 build_x86_64
+
+(cd build_arm64 && MACOSX_DEPLOYMENT_TARGET=12.0 ../configure \
+  --enable-gpl --disable-libxcb --disable-libxcb-shm --disable-libxcb-xfixes \
+  --disable-libxcb-shape --disable-xlib --disable-autodetect \
+  --arch=arm64 --target-os=darwin --cc='clang -arch arm64' \
+  --extra-cflags='-mmacosx-version-min=12.0 -arch arm64' \
+  --extra-ldflags='-mmacosx-version-min=12.0 -arch arm64' \
+  && make -j$(sysctl -n hw.ncpu) ffmpeg ffprobe)
+
+(cd build_x86_64 && MACOSX_DEPLOYMENT_TARGET=12.0 ../configure \
+  --enable-gpl --disable-libxcb --disable-libxcb-shm --disable-libxcb-xfixes \
+  --disable-libxcb-shape --disable-xlib --disable-autodetect \
+  --enable-cross-compile --arch=x86_64 --target-os=darwin --cc='clang -arch x86_64' \
+  --extra-cflags='-mmacosx-version-min=12.0 -arch x86_64' \
+  --extra-ldflags='-mmacosx-version-min=12.0 -arch x86_64' \
+  && make -j$(sysctl -n hw.ncpu) ffmpeg ffprobe)
+
+lipo -create -output ffmpeg  build_arm64/ffmpeg  build_x86_64/ffmpeg
+lipo -create -output ffprobe build_arm64/ffprobe build_x86_64/ffprobe
+```
 
 #### Building the Application
 
@@ -127,7 +154,8 @@ A macOS application for encoding audio files to WMA Lossless format.
 ## Technical Details
 
 - Built with SwiftUI
-- Bundled with [WMA Lossless encoder for FFmpeg](https://github.com/magicisinthehole/FFmpeg/tree/wma-lossless-encoder)
+- Bundled with [WMA Lossless encoder for FFmpeg](https://github.com/magicisinthehole/FFmpeg-with-WMA-Lossless-Enc/tree/wma-lossless-encoder)
+- Bundled `ffmpeg` and `ffprobe` are universal binaries (arm64 + x86_64), Developer-ID signed with hardened runtime
 - Encoding runs locally
 
 ## License
